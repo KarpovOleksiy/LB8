@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Головна сторінка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="student-info">
+        <h1>Лабораторна робота 8</h1>
+        <h2>Створення застосунка Django </h2>
+        <h2>ПІБ: Карпов Олексій</h2>
+        <p>Група: <span style="color: red; font-style: italic;">КН20001</span></p>
+    </div>
+
+<h2>Гості</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Реєстраційний номер гостя</th>
+            <th>Прізвище</th>
+            <th>Ім'я</th>
+            <th>По-батькові</th>
+            <th>Місто</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for guest in guests %}
+            <tr>
+                <td>{{ guest.registration_number }}</td>
+                <td>{{ guest.last_name }}</td>
+                <td>{{ guest.first_name }}</td>
+                <td>{{ guest.middle_name }}</td>
+                <td>{{ guest.city }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Номери</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Кількість кімнат</th>
+            <th>Поверх</th>
+            <th>Телевізор</th>
+            <th>Холодильник</th>
+            <th>Кількість ліжок</th>
+            <th>Категорія</th>
+            <th>Ціна за ніч</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>{{ room.number }}</td>
+                <td>{{ room.room_count }}</td>
+                <td>{{ room.floor }}</td>
+                <td>{{ room.tv }}</td>
+                <td>{{ room.fridge }}</td>
+                <td>{{ room.bed_count }}</td>
+                <td>{{ room.category }}</td>
+                <td>{{ room.price_per_night }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Реєстрації</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Реєстраційний код</th>
+            <th>Гість</th>
+            <th>Дата прибуття</th>
+            <th>Кількість днів проживання</th>
+            <th>Номер</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registration in registrations %}
+            <tr>
+                <td>{{ registration.registration_code }}</td>
+                <td>{{ registration.guest }}</td>
+                <td>{{ registration.arrival_date }}</td>
+                <td>{{ registration.stay_days }}</td>
+                <td>{{ registration.room }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
